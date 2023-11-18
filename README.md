@@ -10,36 +10,36 @@ Thats it.
 Examples
 
 ```cpp
-#include "limbo.h"
+#include "limo.h"
 
 int main() {
-    Limbo::init();
+    Limo::init();
     return 0;
 }
 ```
 This is the base Code to start using the library
 
-```Limbo::``` Main namspace use this to access all the functions for different types of Logs
+```Limo::``` Main namspace use this to access all the functions for different types of Logs
 
 Success Log
 
 ```cpp
-#include "limbo.h"
+#include "limo.h"
 
 int main() {
-    Limbo::init();
-    Limbo::SucessLog("Just a test");
+    Limo::init();
+    Limo::SucessLog("Just a test");
     return 0;
 }
 ```
 Warning Log
 
 ```cpp
-#include "limbo.h"
+#include "limo.h"
 
 int main() {
-    Limbo::init();
-    Limbo::WarningLog("Just a test");
+    Limo::init();
+    Limo::WarningLog("Just a test");
     return 0;
 }
 ```
@@ -47,11 +47,11 @@ int main() {
 Error Log
 
 ```cpp
-#include "limbo.h"
+#include "limo.h"
 
 int main() {
-    Limbo::init();
-    Limbo::ErrorLog("Just a test");
+    Limo::init();
+    Limo::ErrorLog("Just a test");
     return 0;
 }
 ```
@@ -59,24 +59,24 @@ int main() {
 This library can also save the logs just use
 
 ```cpp
-Limbo::Save("App.log");
+Limo::Save("App.log");
 ```
 If you forget to Add a filename in log the Logger will make a file name Limbo.log.
-You also add the path were you want the file to be in the ```limbo::Save()``` function just do this
-```limbo::Save("C:\Users\me\Desktop\test.log");```
+You also add the path were you want the file to be in the ```Limo::Save()``` function just do this
+```Limo::Save("C:\Users\me\Desktop\test.log");```
 
 
 Full example of the library
 
 ```cpp
-#include "limbo.h"
+#include "limo.h"
 
 int main() {
-    Limbo::init();
-    Limbo::ErrorLog("test");
-    Limbo::SucessLog("test");
-    Limbo::WarningLog("test");
-    Limbo::Save("");
+    Limo::init();
+    Limo::ErrorLog("test");
+    Limo::SucessLog("test");
+    Limo::WarningLog("test");
+    Limo::Save("");
     return 0;
 }
 ```
