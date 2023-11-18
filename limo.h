@@ -9,7 +9,7 @@ HANDLE col;
 std::vector<std::string> logs;
 std::fstream file;
 
-namespace Limbo
+namespace Limo
 {
 
 void Save(std::string FileName)
