@@ -47,6 +47,11 @@ void Save(std::string FileName)
         std::cout << "[Error] " + message << std::endl;
         logs.push_back("[Error] " + message);
     }
+void InfoLog(std::string message) {
+        SetConsoleTextAttribute(col, 1);
+        std::cout << "[Info] " + message << std::endl;
+        logs.push_back("[Info] " + message);
+    }
     void WarningLog(std::string message) {
         SetConsoleTextAttribute(col, 6);
         std::cout << "[Warning] " + message << std::endl;
