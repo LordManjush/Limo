@@ -2,7 +2,6 @@
 #include <iostream>
 #include <windows.h>
 #include <fstream>
-#include <vector>
 #include <algorithm>
 HANDLE col;
 
