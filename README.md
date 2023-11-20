@@ -21,6 +21,9 @@ This is the base Code to start using the library
 
 ```Limo::``` Main namspace use this to access all the functions for different types of Logs
 
+Use ```cpp
+Limo::Clear();
+``` To clear the console
 Success Log
 
 ```cpp
