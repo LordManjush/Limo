@@ -71,15 +71,20 @@ int main()
 }
 ```
 
-This library can also save the logs just use
+This library can also save and load the logs just use
 
 ```cpp
-Limo::Save("App.log");
+Limo::SaveLog("App.log");
 ```
 If you forget to Add a filename in log the Logger will make a file name Limbo.log.
-You also add the path were you want the file to be in the ```Limo::Save()``` function just do this
-```Limo::Save("C:\Users\me\Desktop\test.log");```
+You also add the path were you want the file to be in the ```Limo::SaveLog()``` function just do this
+```Limo::SaveLog("C:\Users\me\Desktop\test.log");```
 
+Load the logs use 
+```cpp
+std::vector<std::string> logs;
+Limo::LoadLogs("", logs);
+```
 
 Full example of the library
 
@@ -92,7 +97,7 @@ int main()
     Limo::ErrorLog("test");
     Limo::SucessLog("test");
     Limo::WarningLog("test");
-    Limo::Save("");
+    Limo::SaveLog("");
     return 0;
 }
 ```
