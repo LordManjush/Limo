@@ -109,11 +109,13 @@ int main()
 Using Imgui with the logger to make a simple console
 
 ```cpp
+#include "limo.h"
+
 if(ImGui::Begin("Console"))
 {
-    if (ImGui::ColorButton("Clear", ImVec4(255, 0, 0, 255), ImGuiColorEditFlags_NoTooltip) && Limo.logs.size() >= 0)
+    if (ImGui::ColorButton("Clear", ImVec4(255, 0, 0, 255), ImGuiColorEditFlags_NoTooltip) && Limo::logs.size() >= 0)
     {
-        Limo.logs.clear();
+        Limo::logs.clear();
     }
     for (auto& log : Limo::logs)
     {
