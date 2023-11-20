@@ -1,3 +1,5 @@
+//-------------Anyone can use the library but can't share the share the custom vector to sell it--------------------------------
+
 #include <string>
 #include <iostream>
 #include <windows.h>
