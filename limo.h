@@ -3,7 +3,7 @@
 #include <windows.h>
 #include <fstream>
 #include <vector>
-
+#include <algorithm>
 HANDLE col;
 
 std::fstream file;
@@ -17,9 +17,76 @@ const std::string currentDateTime() {
     return buf;
 }
 
+#pragma region Vector
+
+template <typename T>
+struct vector
+{
+private:
+    T* data;
+    size_t size;
+    size_t capacity;
+public:
+    vector() : data(nullptr), capacity(0), size(0) {}
+
+    ~vector() {
+        delete[] data;
+    }
+
+    void pushback(const T& value)
+    {
+        if(size == capacity)
+        {
+            if (capacity == 0)
+            {
+                capacity = 1;
+            }
+            else
+            {
+                capacity = capacity * 2;
+            }
+            T* new_data = new T[capacity];
+
+
+            for (size_t i = 0; i < size; ++i) {
+                new_data[i] = data[i];
+            }
+            delete[] data;
+            data = new_data;
+        }
+        data[size++] = value;
+    }
+    T& operator[](size_t index)
+    {
+        if (index < size)
+        {
+            return data[index];
+        } else
+        {
+            throw std::out_of_range("Index greater than size");
+        }
+    }
+    size_t GetSize() const {
+        return size;
+    }
+    bool IsEmpty() const {
+        return size == 0;
+    }
+    size_t GetCapacity() const {
+        return capacity;
+    }
+    void clear()
+    {
+        size = 0;
+    }
+};
+
+#pragma endregion
+
 namespace Limo
 {
-    std::vector<std::string> logs;
+
+vector<std::string> logs;
 
     void init()
     {
@@ -34,28 +101,28 @@ namespace Limo
     {
         SetConsoleTextAttribute(col, 4);
         std::cout << "[" + currentDateTime() +  "] " + " [Error] " + message << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Error] " + message);
+        logs.pushback("[" + currentDateTime() +  "] " + " [Error] " + message);
     }
 
     void InfoLog(const std::string& message)
     {
         SetConsoleTextAttribute(col, 1);
         std::cout <<"[" + currentDateTime() +  "] " + " [Info] " + message << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Info] " + message);
+        logs.pushback("[" + currentDateTime() +  "] " + " [Info] " + message);
     }
 
     void WarningLog(const std::string& message)
     {
         SetConsoleTextAttribute(col, 6);
         std::cout << "[" + currentDateTime() +  "] " + " [Warning] " + message << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Warning] " + message);
+        logs.pushback("[" + currentDateTime() +  "] " + " [Warning] " + message);
     }
 
     void SucessLog(const std::string& message)
     {
         SetConsoleTextAttribute(col, 2);
         std::cout << "[" + currentDateTime() +  "] " + " [Success] " + message << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Success] " + message);
+        logs.pushback("[" + currentDateTime() +  "] " + " [Success] " + message);
     }
 
 #pragma endregion
@@ -66,28 +133,28 @@ namespace Limo
     {
         SetConsoleTextAttribute(col, 4);
         std::cout << "[" + currentDateTime() +  "] " + " [Error] " + std::to_string(message) << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Error] " + std::to_string(message));
+        logs.pushback("[" + currentDateTime() +  "] " + " [Error] " + std::to_string(message));
     }
 
     void InfoLog(int message)
     {
         SetConsoleTextAttribute(col, 1);
         std::cout << "[" + currentDateTime() +  "] " + " [Info] " + std::to_string(message) << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Info] " + std::to_string(message));
+        logs.pushback("[" + currentDateTime() +  "] " + " [Info] " + std::to_string(message));
     }
 
     void WarningLog(int message)
     {
         SetConsoleTextAttribute(col, 6);
         std::cout << "[" + currentDateTime() +  "] " + " [Warning] " + std::to_string(message) << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Warning] " + std::to_string(message));
+        logs.pushback("[" + currentDateTime() +  "] " + " [Warning] " + std::to_string(message));
     }
 
     void SucessLog(int message)
     {
         SetConsoleTextAttribute(col, 2);
         std::cout << "[" + currentDateTime() +  "] " + " [Success] " + std::to_string(message) << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Success] " + std::to_string(message));
+        logs.pushback("[" + currentDateTime() +  "] " + " [Success] " + std::to_string(message));
     }
 
 #pragma endregion
@@ -97,32 +164,31 @@ namespace Limo
     {
         SetConsoleTextAttribute(col, 4);
         std::cout << "[" + currentDateTime() +  "] " + " [Error] " + std::to_string(message) << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Error] " + std::to_string(message));
+        logs.pushback("[" + currentDateTime() +  "] " + " [Error] " + std::to_string(message));
     }
 
     void InfoLog(float message)
     {
         SetConsoleTextAttribute(col, 1);
         std::cout << "[" + currentDateTime() +  "] " + " [Info] " + std::to_string(message) << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Info] " + std::to_string(message));
+        logs.pushback("[" + currentDateTime() +  "] " + " [Info] " + std::to_string(message));
     }
 
     void WarningLog(float message)
     {
         SetConsoleTextAttribute(col, 6);
         std::cout << "[" + currentDateTime() +  "] " + " [Warning] " + std::to_string(message) << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Warning] " + std::to_string(message));
+        logs.pushback("[" + currentDateTime() +  "] " + " [Warning] " + std::to_string(message));
     }
 
     void SucessLog(float message) {
         SetConsoleTextAttribute(col, 2);
         std::cout << "[" + currentDateTime() +  "] " + " [Success] " + std::to_string(message) << std::endl;
-        logs.push_back("[" + currentDateTime() +  "] " + " [Success] " + std::to_string(message));
+        logs.pushback("[" + currentDateTime() +  "] " + " [Success] " + std::to_string(message));
     }
 #pragma endregion
 
-
-    void SaveLogs(std::string& FileName)
+    void SaveLogs(std::string FileName)
     {
         if(FileName.empty())
         {
@@ -137,29 +203,11 @@ namespace Limo
         file.open(FileName, std::ios_base::app);
         if(file.is_open())
         {
-            for (auto& s : logs) {
-                file << s + "\n";
+            for (size_t i = 0; i < logs.GetSize(); ++i)
+            {
+               file << logs[i] + "\n";
             }
 
-            file.close();
-        }
-    }
-    void LoadLogs(std::string& FileName, std::vector<std::string>& logs)
-    {
-        if(FileName.empty())
-        {
-            FileName = "Limbo.log";
-        }
-        file.open(FileName, std::ios_base::in);
-        logs.clear();
-        if(file.is_open())
-        {
-            std::string line;
-            while (std::getline(file, line))
-            {
-                line = line + "\n";
-                logs.push_back(line);
-            }
             file.close();
         }
     }
