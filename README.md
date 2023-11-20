@@ -32,12 +32,26 @@ int main() {
     return 0;
 }
 ```
+
+Info Log
+
+```cpp
+#include "limo.h"
+
+int main()
+{
+    Limo::init();
+    Limo::InfoLog("Just a test");
+    return 0;
+}
+```
 Warning Log
 
 ```cpp
 #include "limo.h"
 
-int main() {
+int main()
+{
     Limo::init();
     Limo::WarningLog("Just a test");
     return 0;
@@ -49,7 +63,8 @@ Error Log
 ```cpp
 #include "limo.h"
 
-int main() {
+int main()
+{
     Limo::init();
     Limo::ErrorLog("Just a test");
     return 0;
@@ -71,7 +86,8 @@ Full example of the library
 ```cpp
 #include "limo.h"
 
-int main() {
+int main()
+{
     Limo::init();
     Limo::ErrorLog("test");
     Limo::SucessLog("test");
@@ -80,6 +96,19 @@ int main() {
     return 0;
 }
 ```
-Thats it.
+Using Imgui with the logger to make a simple console
 
-Thank you.
+```cpp
+if(ImGui::Begin("Console"))
+{
+    if (ImGui::ColorButton("Clear", ImVec4(255, 0, 0, 255), ImGuiColorEditFlags_NoTooltip) && Limo.logs.size() >= 0)
+    {
+        Limo.logs.clear();
+    }
+    for (auto& log : Limo::logs)
+    {
+        ImGui::Selectable(log.c_str());
+    }
+}
+```
+
