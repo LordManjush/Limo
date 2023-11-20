@@ -4,7 +4,7 @@ Completely usable no strings attached. Modify, reuse or anything.
 
 How to start
 * Download the code
-* import it to your project
+* import ```limo.h``` to your project
 Thats it.
 
 Examples
