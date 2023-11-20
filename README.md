@@ -1,5 +1,5 @@
 # Limo
-A simple logger made for fun
+A easy to use light weight logger made for fun
 Completely usable no strings attached. Modify, reuse or anything.
 
 How to start
