@@ -1,6 +1,6 @@
 # Limo
 A easy to use light weight logger made for fun
-Completely usable no strings attached. Modify, reuse or anything.
+Completely usable no strings attached.
 (Under update everyday)
 Uses my own custom vector
 How to start
