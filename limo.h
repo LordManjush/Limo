@@ -20,7 +20,7 @@ const std::string currentDateTime() {
 namespace Limo
 {
     std::vector<std::string> logs;
-    
+
     void init()
     {
         col = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -30,28 +30,28 @@ namespace Limo
 
 #pragma region String
 
-    void ErrorLog(std::string message)
+    void ErrorLog(const std::string& message)
     {
         SetConsoleTextAttribute(col, 4);
         std::cout << "[" + currentDateTime() +  "] " + " [Error] " + message << std::endl;
         logs.push_back("[" + currentDateTime() +  "] " + " [Error] " + message);
     }
 
-    void InfoLog(std::string message)
+    void InfoLog(const std::string& message)
     {
         SetConsoleTextAttribute(col, 1);
         std::cout <<"[" + currentDateTime() +  "] " + " [Info] " + message << std::endl;
         logs.push_back("[" + currentDateTime() +  "] " + " [Info] " + message);
     }
 
-    void WarningLog(std::string message)
+    void WarningLog(const std::string& message)
     {
         SetConsoleTextAttribute(col, 6);
         std::cout << "[" + currentDateTime() +  "] " + " [Warning] " + message << std::endl;
         logs.push_back("[" + currentDateTime() +  "] " + " [Warning] " + message);
     }
 
-    void SucessLog(std::string message)
+    void SucessLog(const std::string& message)
     {
         SetConsoleTextAttribute(col, 2);
         std::cout << "[" + currentDateTime() +  "] " + " [Success] " + message << std::endl;
@@ -122,7 +122,7 @@ namespace Limo
 #pragma endregion
 
 
-    void SaveLogs(std::string FileName)
+    void SaveLogs(std::string& FileName)
     {
         if(FileName.empty())
         {
@@ -144,7 +144,7 @@ namespace Limo
             file.close();
         }
     }
-    void LoadLogs(std::string FileName, std::vector<std::string>& logs)
+    void LoadLogs(std::string& FileName, std::vector<std::string>& logs)
     {
         if(FileName.empty())
         {
@@ -166,7 +166,6 @@ namespace Limo
     void Clear()
     {
         system("cls");
-        logs.clear();
     }
 
     namespace CoolFeatures{
@@ -176,5 +175,5 @@ namespace Limo
             std::cout << "************************************************************************************************************************" << std::endl;
         }
     }
-    
+
 }
