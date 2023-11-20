@@ -1,3 +1,4 @@
+//--------------------------------------------Made by Manjush joseph----------------------------------------------------------//
 //-------------Anyone can use the library but can't share the share the custom vector to sell it--------------------------------
 
 #include <string>
@@ -17,7 +18,7 @@ const std::string currentDateTime() {
     strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
     return buf;
 }
-//--------------------------------------------Made by Manjush jose**----------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------------------//
 #pragma region Vector
 
 template <typename T>
