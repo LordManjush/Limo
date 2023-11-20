@@ -76,7 +76,7 @@ To clear all logs use
 ```cpp
 Limo::Clear();
 ```
-This library can also save and load the logs just use
+This library can also save logs just use
 
 ```cpp
 Limo::SaveLog("App.log");
@@ -85,11 +85,6 @@ If you forget to Add a filename in log the Logger will make a file name Limbo.lo
 You also add the path were you want the file to be in the ```Limo::SaveLog()``` function just do this
 ```Limo::SaveLog("C:\Users\me\Desktop\test.log");```
 
-Load the logs use 
-```cpp
-std::vector<std::string> logs;
-Limo::LoadLogs("", logs);
-```
 
 Full example of the library
 
