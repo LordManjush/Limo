@@ -166,6 +166,7 @@ namespace Limo
     void Clear()
     {
         system("cls");
+        logs.clear();
     }
 
     namespace CoolFeatures{
