@@ -1,5 +1,4 @@
 //--------------------------------------------Made by Manjush joseph----------------------------------------------------------//
-//-------------Anyone can use the library but can't share the share the custom vector to sell it--------------------------------
 
 #include <string>
 #include <iostream>
@@ -18,7 +17,6 @@ const std::string currentDateTime() {
     strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
     return buf;
 }
-//------------------------------------------------------------------------------------------------------------------//
 #pragma region Vector
 
 template <typename T>
@@ -84,7 +82,6 @@ public:
 };
 
 #pragma endregion
-// End ownership -------------------------------------//-------------------------------------------------------------
 namespace Limo
 {
 
