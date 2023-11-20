@@ -1,7 +1,7 @@
 # Limo
 A easy to use light weight logger made for fun
 Completely usable no strings attached. Modify, reuse or anything.
-
+(Under update everyday)
 How to start
 * Download the code
 * import ```limo.h``` to your project
