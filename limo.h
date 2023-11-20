@@ -4,7 +4,6 @@
 #include <fstream>
 #include <vector>
 
-
 HANDLE col;
 
 std::fstream file;
@@ -22,47 +21,6 @@ namespace Limo
 {
     std::vector<std::string> logs;
     
-    void SaveLogs(std::string FileName)
-    {
-        if(FileName.empty())
-        {
-            FileName = "Limbo.log";
-        }
-        file.open(FileName, std::ios_base::out);
-        if(file.is_open())
-        {
-            file << "";
-            file.close();
-        }
-        file.open(FileName, std::ios_base::app);
-        if(file.is_open())
-        {
-            for (auto& s : logs) {
-                file << s + "\n";
-            }
-
-            file.close();
-        }
-    }
-    void LoadLogs(std::string FileName, std::vector<std::string>& logs)
-    {
-        if(FileName.empty())
-        {
-            FileName = "Limbo.log";
-        }
-        file.open(FileName, std::ios_base::in);
-        logs.clear();
-        if(file.is_open())
-        {
-            std::string line;
-            while (std::getline(file, line))
-            {
-                line = line + "\n";
-                logs.push_back(line);
-            }
-            file.close();
-        }
-    }
     void init()
     {
         col = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -164,6 +122,51 @@ namespace Limo
 #pragma endregion
 
 
+    void SaveLogs(std::string FileName)
+    {
+        if(FileName.empty())
+        {
+            FileName = "Limbo.log";
+        }
+        file.open(FileName, std::ios_base::out);
+        if(file.is_open())
+        {
+            file << "";
+            file.close();
+        }
+        file.open(FileName, std::ios_base::app);
+        if(file.is_open())
+        {
+            for (auto& s : logs) {
+                file << s + "\n";
+            }
+
+            file.close();
+        }
+    }
+    void LoadLogs(std::string FileName, std::vector<std::string>& logs)
+    {
+        if(FileName.empty())
+        {
+            FileName = "Limbo.log";
+        }
+        file.open(FileName, std::ios_base::in);
+        logs.clear();
+        if(file.is_open())
+        {
+            std::string line;
+            while (std::getline(file, line))
+            {
+                line = line + "\n";
+                logs.push_back(line);
+            }
+            file.close();
+        }
+    }
+    void Clear()
+    {
+        system("cls");
+    }
 
     namespace CoolFeatures{
         void CleanLine()
@@ -172,5 +175,5 @@ namespace Limo
             std::cout << "************************************************************************************************************************" << std::endl;
         }
     }
-
+    
 }
