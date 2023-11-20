@@ -21,28 +21,21 @@ This is the base Code to start using the library
 
 ```Limo::``` Main namspace use this to access all the functions for different types of Logs
 
-Use
-```cpp
-Limo::Clear();
-```
-To clear the console
-
 Success Log
 
 ```cpp
-
 #include "limo.h"
 
 int main() {
     Limo::init();
     Limo::SucessLog("Just a test");
     return 0;
-}```
+}
+```
 
 Info Log
 
 ```cpp
-
 #include "limo.h"
 
 int main()
@@ -50,7 +43,9 @@ int main()
     Limo::init();
     Limo::InfoLog("Just a test");
     return 0;
-}```
+}
+```
+
 Warning Log
 
 ```cpp
@@ -76,7 +71,11 @@ int main()
     return 0;
 }
 ```
-
+Logs can contain string, float and int.
+To clear all logs use 
+```cpp
+Limo::Clear();
+```
 This library can also save and load the logs just use
 
 ```cpp
