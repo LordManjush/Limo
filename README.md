@@ -113,9 +113,10 @@ if(ImGui::Begin("Console"))
     {
         Limo::logs.clear();
     }
-    for (auto& log : Limo::logs)
+           
+    for (size_t i = 0; i < logs.GetSize(); ++i)
     {
-        ImGui::Selectable(log.c_str());
+        ImGui::Selectable(logs[i]);
     }
 }
 ```
