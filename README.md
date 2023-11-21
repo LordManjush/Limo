@@ -1,5 +1,6 @@
 # Limo
-A easy to use light weight logger made for fun
+A easy to use, free, light weight logger made for fun
+There is no license
 Completely usable no strings attached.
 (Under update everyday)
 Uses my own custom vector
