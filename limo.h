@@ -1,91 +1,99 @@
 //--------------------------------------------Made by Manjush joseph----------------------------------------------------------//
 
+#ifndef LIMO_H
+#define LIMO_H
+
+#pragma region includes
 #include <string>
 #include <iostream>
 #include <windows.h>
 #include <fstream>
 #include <algorithm>
-HANDLE col;
+#pragma endregion
 
-std::fstream file;
 
-const std::string currentDateTime() {
-    time_t now = time(0);
-    struct tm tstruct;
-    char buf[80];
-    tstruct = *localtime(&now);
-    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
-    return buf;
-}
-#pragma region Vector
-
-template <typename T>
-struct vector
+namespace Limo
 {
-private:
-    T* data;
-    size_t size;
-    size_t capacity;
-public:
-    vector() : data(nullptr), capacity(0), size(0) {}
-
-    ~vector() {
-        delete[] data;
+    const std::string currentDateTime() {
+        struct tm newtime;
+        time_t now = time(0);
+        localtime_s(&newtime, &now);
+        char buf[80];
+        strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &newtime);
+        return buf;
     }
 
-    void pushback(const T& value)
+#pragma region Vector
+
+    template <typename T>
+    struct vector
     {
-        if(size == capacity)
+    private:
+        T* data;
+        size_t size;
+        size_t capacity;
+    public:
+        vector() : data(nullptr), capacity(0), size(0) {}
+
+        ~vector() {
+            delete[] data;
+        }
+
+        void pushback(const T& value)
         {
-            if (capacity == 0)
+            if (size == capacity)
             {
-                capacity = 1;
+                if (capacity == 0)
+                {
+                    capacity = 1;
+                }
+                else
+                {
+                    capacity = capacity * 2;
+                }
+                T* new_data = new T[capacity];
+
+
+                for (size_t i = 0; i < size; ++i) {
+                    new_data[i] = data[i];
+                }
+                delete[] data;
+                data = new_data;
+            }
+            data[size++] = value;
+        }
+        T& operator[](size_t index)
+        {
+            if (index < size)
+            {
+                return data[index];
             }
             else
             {
-                capacity = capacity * 2;
+                throw std::out_of_range("Index greater than size");
             }
-            T* new_data = new T[capacity];
-
-
-            for (size_t i = 0; i < size; ++i) {
-                new_data[i] = data[i];
-            }
-            delete[] data;
-            data = new_data;
         }
-        data[size++] = value;
-    }
-    T& operator[](size_t index)
-    {
-        if (index < size)
-        {
-            return data[index];
-        } else
-        {
-            throw std::out_of_range("Index greater than size");
+        size_t GetSize() const {
+            return size;
         }
-    }
-    size_t GetSize() const {
-        return size;
-    }
-    bool IsEmpty() const {
-        return size == 0;
-    }
-    size_t GetCapacity() const {
-        return capacity;
-    }
-    void clear()
-    {
-        size = 0;
-    }
-};
+        bool IsEmpty() const {
+            return size == 0;
+        }
+        size_t GetCapacity() const {
+            return capacity;
+        }
+        void clear()
+        {
+            size = 0;
+        }
+    };
 
 #pragma endregion
-namespace Limo
-{
+    HANDLE col;
 
-vector<std::string> logs;
+    std::fstream file;
+
+    vector<std::string> logs;
 
     void init()
     {
@@ -93,9 +101,7 @@ vector<std::string> logs;
         SetConsoleTextAttribute(col, 7);
         logs.clear();
     }
-
 #pragma region String
-
     void ErrorLog(const std::string& message)
     {
         SetConsoleTextAttribute(col, 4);
@@ -224,3 +230,6 @@ vector<std::string> logs;
     }
 
 }
+
+
+#endif
